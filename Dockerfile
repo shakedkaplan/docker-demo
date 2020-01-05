@@ -1,2 +1,2 @@
-FROM imiell/bad-dockerfile
+FROM vulhub/mysql:5.5.23
 COPY README.md .
