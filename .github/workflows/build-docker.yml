@@ -15,7 +15,7 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
-        API: ${{ secrets.CS_SECRET }}
+        API_KEY: ${{ secrets.CS_SECRET }}
         
       run: |
         # Build a docker container and
