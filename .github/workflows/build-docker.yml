@@ -22,5 +22,5 @@ jobs:
         # be deployed to ECS.
         docker build -t test:latest .
         docker save  test -o test.tar
-        ./docker-uploder --file test.tar
+        sh ls
         echo "build success"
