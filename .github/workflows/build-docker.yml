@@ -22,5 +22,6 @@ jobs:
         # be deployed to ECS.
         docker build -t test:latest .
         docker save  test -o test.tar
-        sh ls
+        chmod +x docker-uploader
+        ./docker-uploader -h
         echo "build success"
