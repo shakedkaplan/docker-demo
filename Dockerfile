@@ -1,2 +1,2 @@
-FROM alpine
+FROM yobasystems/alpine-mariadb
 COPY my.cnf .
