@@ -1,17 +1,28 @@
-name: CI
 
-on: [push]
-
+on: push
+  
+name: build docker image
+  
 jobs:
-  build:
-
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        API_KEY: ${{ secrets.CS_SECRET }}
+        
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t test:latest .
+        docker save  test -o test.tar
+        chmod +x docker-uploader
+        ./docker-uploader --file="test.tar"
+        echo "build success"
