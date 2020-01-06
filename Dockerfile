@@ -1,2 +1,2 @@
-FROM vulnhub/mysql:5.5.23
+FROM vulhub/mysql:5.5.23
 COPY my.cnf .
